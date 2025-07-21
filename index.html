@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Liste Interactive – Brita</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    @media print {
+      /* Cacher la section d’ajout de fontaine et Accessoires et Bouteilles */
+      #fountain-form,
+      #accessory-form {
+        display: none !important;
+      }
+      /* Cacher les boutons Imprimer et Réinitialiser */
+      #print-btn,
+      #reset-btn {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-gray-50 font-sans leading-normal py-8">
+  <div class="max-w-4xl mx-auto p-6">
+    <div class="text-center mb-8">
+      <img
+        src="BRITA_Logo_3c_CMYK (1).png"
+        alt="Logo Brita"
+        class="mx-auto w-40 mb-4"
+      />
+      <h1 class="text-3xl font-semibold text-gray-800 mb-2">Gestion des Salons & Fontaines</h1>
+      <p class="text-gray-600">Organisez facilement vos installations Brita</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg shadow-lg mb-8">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Informations du Salon</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div>
+          <label for="salon" class="block text-gray-700 font-medium mb-2">Nom du Salon</label>
+          <select
+            id="salon"
+            class="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 w-full"
+          >
+            <option value="" disabled selected>-- Choisir un salon --</option>
+            <option>SETA</option>
+            <option>PCF</option>
+            <option>SIRHA</option>
+            <option>VENDING SHOW</option>
+            <option>COFFEE Meeting</option>
+            <option>HR Meeting</option>
+            <option>Workplace</option>
+            <option>Convention Colombus</option>
+            <option>Convention CBRE</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="responsable" class="block text-gray-700 font-medium mb-2">Responsable du Salon</label>
+          <select
+            id="responsable"
+            class="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 w-full"
+          >
+            <option value="" disabled selected>-- Choisir un responsable --</option>
+            <option>Inès</option>
+            <option>Ibtissam</option>
+            <option>Hugo</option>
+            <option>Naël le bg de la boite</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="date-montage" class="block text-gray-700 font-medium mb-2">Date de Montage</label>
+          <input
+            type="date"
+            id="date-montage"
+            class="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 w-full"
+          />
+        </div>
+
+        <div>
+          <label for="date-demontage" class="block text-gray-700 font-medium mb-2">Date de Démontage</label>
+          <input
+            type="date"
+            id="date-demontage"
+            class="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 w-full"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div id="fountain-form" class="bg-white p-6 rounded-lg shadow-lg mb-8">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Ajouter une Fontaine</h2>
+      
+      <div class="mb-6">
+        <label for="fountain-type" class="block text-gray-700 font-medium mb-2">Choisir une Fontaine</label>
+        <select
+          id="fountain-type"
+          class="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 w-full"
+        >
+          <option value="" disabled selected>-- Choisir une fontaine --</option>
+          <option>TOP PRO 50</option>
+          <option>C-TAP</option>
+          <option>I-TAP</option>
+          <option>TOP compact</option>
+          <option>Fill PRO</option>
+          <option>Fill T-TAP</option>
+          <option>TOP PRO 85</option>
+        </select>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+        <div class="flex items-center">
+          <input type="checkbox" id="option-arrivee-eau" value="Arrivée d'eau" class="h-5 w-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500" />
+          <label for="option-arrivee-eau" class="ml-2 text-gray-700">Arrivée d'eau</label>
+        </div>
+        <div class="flex items-center">
+          <input type="checkbox" id="option-evacuation-eau" value="Évacuation d'eau" class="h-5 w-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500" />
+          <label for="option-evacuation-eau" class="ml-2 text-gray-700">Évacuation d'eau</label>
+        </div>
+        <div class="flex items-center">
+          <input type="checkbox" id="option-modele-expo" value="Modèle expo" class="h-5 w-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500" />
+          <label for="option-modele-expo" class="ml-2 text-gray-700">Modèle expo</label>
+        </div>
+        <div class="flex items-center">
+          <input type="checkbox" id="option-pompes-bidon-10l" value="Pompes et Bidon 10 L" class="h-5 w-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500" />
+          <label for="option-pompes-bidon-10l" class="ml-2 text-gray-700">Pompes et Bidon 10 L</label>
+        </div>
+        <div class="flex items-center">
+          <input type="checkbox" id="option-bidon-5l" value="Bidon 5 L" class="h-5 w-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500" />
+          <label for="option-bidon-5l" class="ml-2 text-gray-700">Bidon 5 L</label>
+        </div>
+        <div class="flex items-center">
+          <input type="checkbox" id="option-co2" value="CO₂" class="h-5 w-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500" />
+          <label for="option-co2" class="ml-2 text-gray-700">CO₂</label>
+        </div>
+        <div class="flex items-center">
+          <input type="checkbox" id="option-equipe-montage" value="Équipe tech montage" class="h-5 w-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500" />
+          <label for="option-equipe-montage" class="ml-2 text-gray-700">Équipe tech montage</label>
+        </div>
+        <div class="flex items-center">
+          <input type="checkbox" id="option-equipe-demontage" value="Équipe tech démontage" class="h-5 w-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500" />
+          <label for="option-equipe-demontage" class="ml-2 text-gray-700">Équipe tech démontage</label>
+        </div>
+        <div class="flex items-center">
+          <input type="checkbox" id="option-meuble-petit-salon" value="Meuble petit salon" class="h-5 w-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500" />
+          <label for="option-meuble-petit-salon" class="ml-2 text-gray-700">Meuble petit salon</label>
+        </div>
+        <div class="flex items-center">
+          <input type="checkbox" id="option-clavier-eap" value="Clavier EAP" class="h-5 w-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500" />
+          <label for="option-clavier-eap" class="ml-2 text-gray-700">Clavier EAP</label>
+        </div>
+        <div class="flex items-center">
+          <input type="checkbox" id="option-rallonge" value="Rallonge" class="h-5 w-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500" />
+          <label for="option-rallonge" class="ml-2 text-gray-700">Rallonge</label>
+        </div>
+        <div class="flex items-center">
+          <input type="checkbox" id="option-produits-nettoyage" value="Produits de nettoyage" class="h-5 w-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500" />
+          <label for="option-produits-nettoyage" class="ml-2 text-gray-700">Produits de nettoyage</label>
+        </div>
+        <div class="flex items-center">
+          <input type="checkbox" id="option-outils" value="Outils (pince, tournevis)" class="h-5 w-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500" />
+          <label for="option-outils" class="ml-2 text-gray-700">Outils (pince, tournevis)</label>
+        </div>
+        <div class="flex items-center">
+          <input type="checkbox" id="option-sonde" value="Sonde" class="h-5 w-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500" />
+          <label for="option-sonde" class="ml-2 text-gray-700">Sonde</label>
+        </div>
+        <div class="flex items-center">
+          <input type="checkbox" id="option-hmi" value="HMI" class="h-5 w-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500" />
+          <label for="option-hmi" class="ml-2 text-gray-700">HMI</label>
+        </div>
+        <div class="flex items-center">
+          <input type="checkbox" id="option-portionnage" value="Portionnage" class="h-5 w-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500" />
+          <label for="option-portionnage" class="ml-2 text-gray-700">Portionnage</label>
+        </div>
+      </div>
+
+      <div class="flex justify-end">
+        <button
+          id="add-fountain-btn"
+          class="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold px-5 py-2 rounded shadow"
+        >
+          + Ajouter une Fontaine
+        </button>
+      </div>
+    </div>
+
+    <div id="accessory-form" class="bg-white p-6 rounded-lg shadow-lg mb-8">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Accessoires et Bouteilles</h2>
+      <div class="space-y-4 mb-6">
+        <div class="flex items-center space-x-4">
+          <input type="checkbox" id="accessory-lave-verre" value="Lave verre" class="h-5 w-5 text-green-600 border-gray-300 rounded focus:ring-green-500"/>
+          <label for="accessory-lave-verre" class="text-gray-700 flex-1">Lave verre</label>
+          <input type="number" id="quantity-lave-verre" value="1" step="0.1" min="0" class="w-20 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-green-400"/>
+        </div>
+        <div class="flex items-center space-x-4">
+          <input type="checkbox" id="accessory-wave-verre" value="Wave verre" class="h-5 w-5 text-green-600 border-gray-300 rounded focus:ring-green-500"/>
+          <label for="accessory-wave-verre" class="text-gray-700 flex-1">Wave verre</label>
+          <input type="number" id="quantity-wave-verre" value="8.5" step="0.1" min="0" class="w-20 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-green-400"/>
+        </div>
+        <div class="flex items-center space-x-4">
+          <input type="checkbox" id="accessory-wave-tritan" value="Wave Tritan" class="h-5 w-5 text-green-600 border-gray-300 rounded focus:ring-green-500"/>
+          <label for="accessory-wave-tritan" class="text-gray-700 flex-1">Wave Tritan</label>
+          <input type="number" id="quantity-wave-tritan" value="8" step="0.1" min="0" class="w-20 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-green-400"/>
+        </div>
+        <div class="flex items-center space-x-4">
+          <input type="checkbox" id="accessory-lounge-petite" value="Lounge petite" class="h-5 w-5 text-green-600 border-gray-300 rounded focus:ring-green-500"/>
+          <label for="accessory-lounge-petite" class="text-gray-700 flex-1">Lounge petite</label>
+          <input type="number" id="quantity-lounge-petite" value="2" step="0.1" min="0" class="w-20 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-green-400"/>
+        </div>
+        <div class="flex items-center space-x-4">
+          <input type="checkbox" id="accessory-lounge-grande" value="Lounge grande" class="h-5 w-5 text-green-600 border-gray-300 rounded focus:ring-green-500"/>
+          <label for="accessory-lounge-grande" class="text-gray-700 flex-1">Lounge grande</label>
+          <input type="number" id="quantity-lounge-grande" value="3" step="0.1" min="0" class="w-20 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-green-400"/>
+        </div>
+        <div class="flex items-center space-x-4">
+          <input type="checkbox" id="accessory-grandes-swing" value="Grandes swing" class="h-5 w-5 text-green-600 border-gray-300 rounded focus:ring-green-500"/>
+          <label for="accessory-grandes-swing" class="text-gray-700 flex-1">Grandes swing</label>
+          <input type="number" id="quantity-grandes-swing" value="1" step="0.1" min="0" class="w-20 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-green-400"/>
+        </div>
+        <div class="flex items-center space-x-4">
+          <input type="checkbox" id="accessory-petites-swing" value="Petites swing" class="h-5 w-5 text-green-600 border-gray-300 rounded focus:ring-green-500"/>
+          <label for="accessory-petites-swing" class="text-gray-700 flex-1">Petites swing</label>
+          <input type="number" id="quantity-petites-swing" value="1.5" step="0.1" min="0" class="w-20 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-green-400"/>
+        </div>
+        <div class="flex items-center space-x-4">
+          <input type="checkbox" id="accessory-twist" value="Twist" class="h-5 w-5 text-green-600 border-gray-300 rounded focus:ring-green-500"/>
+          <label for="accessory-twist" class="text-gray-700 flex-1">Twist</label>
+          <input type="number" id="quantity-twist" value="9" step="0.1" min="0" class="w-20 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-green-400"/>
+        </div>
+      </div>
+
+      <div class="flex justify-end">
+        <button
+          id="add-accessories-btn"
+          class="bg-green-500 hover:bg-green-600 text-white font-semibold px-5 py-2 rounded shadow"
+        >
+          + Ajouter Accessoires
+        </button>
+      </div>
+    </div>
+
+    <div id="recapitulatif" class="bg-white p-6 rounded-lg shadow-lg mb-8">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Récapitulatif des Fontaines</h2>
+      <div id="recap-list" class="space-y-6">
+        </div>
+    </div>
+
+    <div class="flex justify-center items-center space-x-4 mb-8">
+      <button
+        id="print-btn"
+        class="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-5 py-2 rounded shadow"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mr-2" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M6 2a2 2 0 00-2 2v3H3a2 2 0 00-2 2v4a2 2 0 002 2h1v3a2 2 0 002 2h6a2 2 0 002-2v-3h1a2 2 0 002-2v-4a2 2 0 00-2-2h-1V4a2 2 0 00-2-2H6zm0 2h8v3H6V4zm8 5H6a1 1 0 000 2h8a1 1 0 000-2zm0 4H6a1 1 0 000 2h8a1 1 0 000-2zm-7 4v-3h6v3H7z" />
+        </svg>
+        Imprimer / Enregistrer en PDF
+      </button>
+
+      <button
+        id="reset-btn"
+        class="bg-red-500 hover:bg-red-600 text-white font-semibold px-5 py-2 rounded shadow"
+      >
+        Réinitialiser tout
+      </button>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+      const addBtn = document.getElementById('add-fountain-btn');
+      const recapList = document.getElementById('recap-list');
+      let fountainCount = 0;
+
+      // Gestion des Fontaines
+      addBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        const typeSelect = document.getElementById('fountain-type');
+        const selectedType = typeSelect.value;
+        if (!selectedType) {
+          alert("Veuillez d'abord choisir un modèle de fontaine.");
+          return;
+        }
+
+        const optionsChecked = Array.from(
+          document.querySelectorAll('#fountain-form input[type="checkbox"]:checked')
+        ).map(cb => cb.value);
+
+        fountainCount++;
+
+        const fountainCard = document.createElement('div');
+        fountainCard.className = "bg-gray-100 border-l-4 border-blue-400 rounded p-4 shadow";
+
+        const title = document.createElement('h3');
+        title.className = "text-xl font-semibold text-gray-800 mb-2";
+        title.textContent = `Fontaine #${fountainCount} : ${selectedType}`;
+        fountainCard.appendChild(title);
+
+        if (optionsChecked.length > 0) {
+          const ul = document.createElement('ul');
+          ul.className = "list-disc list-inside text-gray-700";
+          optionsChecked.forEach(opt => {
+            const li = document.createElement('li');
+            li.textContent = opt;
+            ul.appendChild(li);
+          });
+          fountainCard.appendChild(ul);
+        } else {
+          const p = document.createElement('p');
+          p.className = "text-gray-600 italic";
+          p.textContent = "Aucune option spécifiée.";
+          fountainCard.appendChild(p);
+        }
+
+        recapList.appendChild(fountainCard);
+
+        // Réinitialiser le formulaire de fontaine après ajout
+        typeSelect.value = "";
+        document.querySelectorAll('#fountain-form input[type="checkbox"]').forEach(cb => cb.checked = false);
+      });
+
+      // Bouton Imprimer
+      document.getElementById('print-btn').addEventListener('click', function (e) {
+        e.preventDefault();
+        window.print();
+      });
+
+      // Bouton Réinitialiser
+      document.getElementById('reset-btn').addEventListener('click', function (e) {
+        e.preventDefault();
+        document.getElementById('salon').value = "";
+        document.getElementById('responsable').value = "";
+        document.getElementById('date-montage').value = "";
+        document.getElementById('date-demontage').value = "";
+        
+        // Réinitialiser la section fontaine
+        document.getElementById('fountain-type').value = "";
+        document.querySelectorAll('#fountain-form input[type="checkbox"]').forEach(cb => cb.checked = false);
+        
+        // Réinitialiser la section accessoires
+        const accessoriesToReset = [
+          'accessory-lave-verre', 'accessory-wave-verre', 'accessory-wave-tritan',
+          'accessory-lounge-petite', 'accessory-lounge-grande', 'accessory-grandes-swing',
+          'accessory-petites-swing', 'accessory-twist'
+        ];
+        const defaultQuantities = { // Stockez les valeurs par défaut
+          'quantity-lave-verre': '1',
+          'quantity-wave-verre': '8.5',
+          'quantity-wave-tritan': '8',
+          'quantity-lounge-petite': '2',
+          'quantity-lounge-grande': '3',
+          'quantity-grandes-swing': '1',
+          'quantity-petites-swing': '1.5',
+          'quantity-twist': '9'
+        };
+
+        accessoriesToReset.forEach(id => {
+          const checkbox = document.getElementById(id);
+          if (checkbox) checkbox.checked = false;
+          const qtyId = `quantity-${id.split('-').slice(1).join('-')}`; // Reconstruire qtyId
+          const qtyInput = document.getElementById(qtyId);
+          if (qtyInput) qtyInput.value = defaultQuantities[qtyId]; // Réinitialiser à la valeur par défaut
+        });
+
+        recapList.innerHTML = "";
+        fountainCount = 0;
+      });
+
+      // ====== Gestion des Accessoires et Bouteilles ======
+      const addAccessoriesBtn = document.getElementById('add-accessories-btn');
+      addAccessoriesBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        const accessories = [
+          { id: 'accessory-lave-verre', name: 'Lave verre', qtyId: 'quantity-lave-verre' },
+          { id: 'accessory-wave-verre', name: 'Wave verre', qtyId: 'quantity-wave-verre' },
+          { id: 'accessory-wave-tritan', name: 'Wave Tritan', qtyId: 'quantity-wave-tritan' },
+          { id: 'accessory-lounge-petite', name: 'Lounge petite', qtyId: 'quantity-lounge-petite' },
+          { id: 'accessory-lounge-grande', name: 'Lounge grande', qtyId: 'quantity-lounge-grande' },
+          { id: 'accessory-grandes-swing', name: 'Grandes swing', qtyId: 'quantity-grandes-swing' },
+          { id: 'accessory-petites-swing', name: 'Petites swing', qtyId: 'quantity-petites-swing' },
+          { id: 'accessory-twist', name: 'Twist', qtyId: 'quantity-twist' }
+        ];
+
+        // Filtrer les accessoires cochés
+        const selected = accessories
+          .filter(acc => document.getElementById(acc.id).checked)
+          .map(acc => ({
+            name: acc.name,
+            quantity: document.getElementById(acc.qtyId).value || '0'
+          }));
+
+        if (selected.length === 0) {
+          alert('Veuillez sélectionner au moins un accessoire.');
+          return;
+        }
+
+        // Supprimer l'ancienne section si elle existe
+        const oldSec = document.getElementById('accessories-recap');
+        if (oldSec) oldSec.remove();
+
+        // Créer la nouvelle section récap
+        const accessoriesSection = document.createElement('div');
+        accessoriesSection.id = 'accessories-recap';
+        accessoriesSection.className = 'bg-gray-100 border-l-4 border-green-400 rounded p-4 shadow mb-6';
+
+        const secTitle = document.createElement('h3');
+        secTitle.className = 'text-xl font-semibold text-gray-800 mb-2';
+        secTitle.textContent = 'Accessoires & Bouteilles';
+        accessoriesSection.appendChild(secTitle);
+
+        const ul = document.createElement('ul');
+        ul.className = 'list-disc list-inside text-gray-700';
+        selected.forEach(item => {
+          const li = document.createElement('li');
+          li.textContent = `${item.name} : ${item.quantity}`;
+          ul.appendChild(li);
+        });
+        accessoriesSection.appendChild(ul);
+
+        // Ajouter au récapitulatif global
+        recapList.appendChild(accessoriesSection);
+
+        // Réinitialiser les cases cochées et les quantités à leur valeur par défaut
+        const defaultQuantities = { // Définissez les valeurs par défaut ici
+          'quantity-lave-verre': '1',
+          'quantity-wave-verre': '8.5',
+          'quantity-wave-tritan': '8',
+          'quantity-lounge-petite': '2',
+          'quantity-lounge-grande': '3',
+          'quantity-grandes-swing': '1',
+          'quantity-petites-swing': '1.5',
+          'quantity-twist': '9'
+        };
+
+        accessories.forEach(acc => {
+          document.getElementById(acc.id).checked = false;
+          const qtyInput = document.getElementById(acc.qtyId);
+          if (qtyInput) qtyInput.value = defaultQuantities[acc.qtyId];
+        });
+      });
+    });
+  </script>
+</body>
+</html>
