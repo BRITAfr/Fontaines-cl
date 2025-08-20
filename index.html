@@ -47,13 +47,22 @@
             <option>PCF</option>
             <option>SIRHA</option>
             <option>VENDING SHOW</option>
-            <option>COFFEE Meeting</option>
+            <option>COFFEE Show</option>
             <option>HR Meeting</option>
             <option>Workplace</option>
             <option>Convention Colombus</option>
             <option>Convention CBRE</option>
-          </select>
-        </div>
+            <option>Convention Novotel</option>
+            <option>Evenement BRITA</option>
+        <option value="autre">Autre</option>
+  </select>
+  <input
+    type="text"
+    id="salon-autre"
+    placeholder="Préciser le salon"
+    class="mt-2 border border-gray-300 rounded px-3 py-2 w-full hidden"
+  />
+</div>
 
         <div>
           <label for="responsable" class="block text-gray-700 font-medium mb-2">Responsable du Salon</label>
@@ -66,28 +75,38 @@
             <option>Ibtissam</option>
             <option>Hugo</option>
             <option>Naël le bg de la boite</option>
-          </select>
-        </div>
+      <option value="autre">Autre</option>
+  </select>
+  <input
+    type="text"
+    id="salon-autre"
+    placeholder="Préciser le responsable"
+    class="mt-2 border border-gray-300 rounded px-3 py-2 w-full hidden"
+  />
+ <div>
+   
+  <label for="date-montage" class="block text-gray-700 font-medium mb-2">Date de Montage</label>
+  <input
+    type="text"
+    id="date-montage"
+    placeholder="JJ/MM/AAAA"
+    pattern="\d{2}/\d{2}/\d{4}"
+    title="Format attendu : JJ/MM/AAAA"
+    class="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 w-full"
+  />
+</div>
 
-        <div>
-          <label for="date-montage" class="block text-gray-700 font-medium mb-2">Date de Montage</label>
-          <input
-            type="date"
-            id="date-montage"
-            class="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 w-full"
-          />
-        </div>
-
-        <div>
-          <label for="date-demontage" class="block text-gray-700 font-medium mb-2">Date de Démontage</label>
-          <input
-            type="date"
-            id="date-demontage"
-            class="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 w-full"
-          />
-        </div>
-      </div>
-    </div>
+<div>
+  <label for="date-demontage" class="block text-gray-700 font-medium mb-2">Date de Démontage</label>
+  <input
+    type="text"
+    id="date-demontage"
+    placeholder="JJ/MM/AAAA"
+    pattern="\d{2}/\d{2}/\d{4}"
+    title="Format attendu : JJ/MM/AAAA"
+    class="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 w-full"
+  />
+</div>
 
     <div id="fountain-form" class="bg-white p-6 rounded-lg shadow-lg mb-8">
       <h2 class="text-2xl font-semibold text-gray-800 mb-4">Ajouter une Fontaine</h2>
@@ -229,6 +248,12 @@
           <label for="accessory-twist" class="text-gray-700 flex-1">Twist</label>
           <input type="number" id="quantity-twist" value="9" step="0.1" min="0" class="w-20 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-green-400"/>
         </div>
+        <div class="flex items-center space-x-4">
+  <input type="checkbox" id="accessory-autre" value="autre" class="h-5 w-5 text-green-600 border-gray-300 rounded focus:ring-green-500" onchange="toggleOtherInput(this, 'accessory-autre-input')"/>
+  <label for="accessory-autre" class="text-gray-700 flex-1">Autre accessoire</label>
+  <input type="text" id="accessory-autre-input" placeholder="Préciser l'accessoire" class="w-40 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-green-400 hidden"/>
+  <input type="number" id="quantity-autre" value="1" step="0.1" min="0" class="w-20 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-green-400 hidden"/>
+</div>
       </div>
 
       <div class="flex justify-end">
